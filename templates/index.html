@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Поисковые теги</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            padding: 40px 20px;
+        }
+        main {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px #00000010;
+        }
+        form {
+            display: flex;
+            gap: 10px;
+        }
+        input {
+            flex: 1;
+            min-width: 0;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 20px;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .tag {
+            background: #e8efff;
+            color: #1746a2;
+            padding: 10px 14px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+        .tag:hover {
+            background: #d2e1ff;
+        }
+        small {
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Поисковые теги</h1>
+
+        <form action="/" method="GET">
+            <input type="text" name="q"
+                   value="{{.Query}}"
+                   placeholder="Введите запрос"
+                   required>
+            <button type="submit">Найти</button>
+        </form>
+
+        {{if .Searched}}
+            {{if .Tags}}
+                <div class="tags">
+                    {{range .Tags}}
+                        <a class="tag" href="/?q={{.Tag}}">
+                            {{.Tag}}
+                            <small>({{.Users}})</small>
+                        </a>
+                    {{end}}
+                </div>
+            {{else}}
+                <p>Для этого запроса пока нет тегов</p>
+            {{end}}
+        {{end}}
+    </main>
+</body>
+</html>

@@ -1,0 +1,6 @@
+=== RUN   TestNormalize
+--- PASS: TestNormalize (0.00s)
+=== RUN   TestTagsHandlerEmptyQuery
+--- PASS: TestTagsHandlerEmptyQuery (0.00s)
+PASS
+ok  	search-tags	(cached)
